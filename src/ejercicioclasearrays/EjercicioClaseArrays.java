@@ -43,14 +43,8 @@ public class EjercicioClaseArrays {
         System.out.println("\n\t NOMBRE\t      NOTA");
         System.out.println("\t ======\t      ====");
         for(int i=0;i<tNombre.length;i++){
-            if (i == tNombre.length - 1) { // La última entrada es la nueva
-                System.out.println("\n\tNOMBRE NUEVO\tNOTA NUEVA");
-                System.out.println("\t============\t==========");
-                System.out.println("\t"+tNombre[i]+"\t\t"+tNota[i]);
-            } else {
-                System.out.println("\t"+tNombre[i]+"\t\t"+tNota[i]);
-            }
-            }
+            System.out.println("\t"+tNombre[i]+"\t\t"+tNota[i]);
+        }
         System.out.println("\n\n");
     }
     
@@ -163,7 +157,33 @@ public class EjercicioClaseArrays {
     }
     
     public static void eliminar(String tNombre[], int tNota[], Scanner dato){
+    
+        //Visualizar la tabla
+        visualizarDatos("Tabla de nombres y notas: ", tNombre, tNota);
         
+        System.out.print("Indica la posicion del elemento que quieres "
+                + "borrar: ");
+        int pos = dato.nextInt() - 1;
+        String alumnoBorrado = tNombre[pos];
+        int notaBorrada = tNota[pos];
+        
+        // Crear nuevos arrays con un tamaño menor
+        String[] nuevosNombres = new String[tNombre.length - 1];
+        int[] nuevasNotas = new int[tNombre.length - 1];
+        
+        // Copiar elementos, omitiendo el de la posición dada
+        for (int i = 0, j = 0; i < tNombre.length; i++) {
+            if (i != pos) {
+                nuevosNombres[j] = tNombre[i];
+                nuevasNotas[j] = tNota[i];
+                j++;
+            }
+        }
+        // Mostrar la lista actualizada
+        visualizarDatos("Array con un nombre menos: ", nuevosNombres, nuevasNotas);
+        // Mostrar el alumno eliminado (fuera del bucle)
+        System.out.println("El alumno eliminado fue: " + alumnoBorrado + " - " 
+                + notaBorrada);
     }
     
     public static void menu(){//procedimiento
