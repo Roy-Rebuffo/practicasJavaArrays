@@ -44,11 +44,13 @@ public class EjercicioClaseArrays {
         System.out.println("\t ======\t      ====");
         for(int i=0;i<tNombre.length;i++){
             if (i == tNombre.length - 1) { // La última entrada es la nueva
-            System.out.println(tNombre[i] + " - " + tNota[i] + " (nota nueva)");
-        } else {
-            System.out.println(tNombre[i] + " - " + tNota[i]);
-        }
-        }
+                System.out.println("\n\tNOMBRE NUEVO\tNOTA NUEVA");
+                System.out.println("\t============\t==========");
+                System.out.println("\t"+tNombre[i]+"\t\t"+tNota[i]);
+            } else {
+                System.out.println("\t"+tNombre[i]+"\t\t"+tNota[i]);
+            }
+            }
         System.out.println("\n\n");
     }
     
@@ -131,7 +133,7 @@ public class EjercicioClaseArrays {
         visualizarDatos("Los suspensos son:",susNombre,susNota);
     }
     
-    public static void insertarNota(String tNombre[], int tNota[], Scanner dato){
+    public static void insertar(String tNombre[], int tNota[], Scanner dato){
         // Solicitar el nuevo nombre para el array
         System.out.print("Inserte un nombre para añadir al array: ");
         String nombre = dato.next();
@@ -158,7 +160,9 @@ public class EjercicioClaseArrays {
         // Mostrar los nuevos arrays 
         visualizarDatos("Tabla con nuevo nombre y nota añadida"
                 ,nuevosNombres,nuevasNotas);
-        
+    }
+    
+    public static void eliminar(String tNombre[], int tNota[], Scanner dato){
         
     }
     
@@ -217,10 +221,10 @@ public class EjercicioClaseArrays {
                     suspensos(tNombres,tNotas,sus);
                     break;
                 case 6:
-                    insertarNota(tNombres, tNotas, dato);
+                    insertar(tNombres, tNotas, dato);
                     break;
                 case 7:
-                    //ejercicio_7(4);
+                    eliminar(tNombres, tNotas, dato);
                     break;
                 case 8:
                     //ejercicio_8(2);
