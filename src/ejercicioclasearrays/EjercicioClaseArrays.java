@@ -1,17 +1,20 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+//Ver un listado de los nombres y las notas de los alumnos✔
+//Ver ese mismo listado ordenado por los nombres✔
+//Ordenar descendentemente las notas✔
+//Copia de cada uno de los arrays solo con los aprobados✔
+//Copia de cada uno de los arrays solo con los suspensos✔
+//Metodo que permita insertar nombre y nota✔
+//Metodo que permita eliminar un alumno y su nota.
+//Metodo que me permita cambiar el nombre o la nota
+//Con el resultado que tengamos, generar una clase que tenga dos atributos. Nombre
+//y nota en el que creemos los objetos del array que tengamos
+
 package ejercicioclasearrays;
 
 import java.util.Arrays;
 import java.util.Scanner;
 
-/**
- *
- * @author PROFESOR
- */
+
 public class EjercicioClaseArrays {
 
     /**
@@ -40,7 +43,11 @@ public class EjercicioClaseArrays {
         System.out.println("\n\t NOMBRE\t      NOTA");
         System.out.println("\t ======\t      ====");
         for(int i=0;i<tNombre.length;i++){
-            System.out.println("\t"+tNombre[i]+"\t\t"+tNota[i]);
+            if (i == tNombre.length - 1) { // La última entrada es la nueva
+            System.out.println(tNombre[i] + " - " + tNota[i] + " (nota nueva)");
+        } else {
+            System.out.println(tNombre[i] + " - " + tNota[i]);
+        }
         }
         System.out.println("\n\n");
     }
@@ -124,6 +131,35 @@ public class EjercicioClaseArrays {
         visualizarDatos("Los suspensos son:",susNombre,susNota);
     }
     
+    public static void insertarNota(String tNombre[], int tNota[], Scanner dato){
+        // Solicitar el nuevo nombre para el array
+        System.out.print("Inserte un nombre para añadir al array: ");
+        String nombre = dato.next();
+
+        //Solicitar la nueva nota para el array
+        System.out.print("Inserte una nota para añadir al array: ");
+        int nota = dato.nextInt();
+        
+         // Crear nuevos arrays con espacio adicional
+        String[] nuevosNombres = new String[tNombre.length + 1];
+        int[] nuevasNotas = new int[tNota.length + 1];
+        
+        // Copiar datos actuales a los nuevos arrays
+        System.arraycopy(tNombre, 0, nuevosNombres, 0, tNombre.length);
+        System.arraycopy(tNota, 0, nuevasNotas, 0, tNota.length);
+        
+        // Añadir el nuevo nombre y la nueva nota al final
+        nuevosNombres[nuevosNombres.length - 1] = nombre;
+        nuevasNotas[nuevasNotas.length - 1] = nota;
+        
+        //Modificar el nuevo array para que siga cogiendo las notas nuevas 
+        //incorporadasy no se reinicie cada vez que repitamos el ejercicio
+        
+        // Mostrar los nuevos arrays 
+        visualizarDatos("Tabla con nuevo nombre y nota añadida"
+                ,nuevosNombres,nuevasNotas);
+    }
+    
     public static void menu(){//procedimiento
         int opcion=-1;
         Scanner dato = new Scanner(System.in);
@@ -179,7 +215,7 @@ public class EjercicioClaseArrays {
                     suspensos(tNombres,tNotas,sus);
                     break;
                 case 6:
-                    //ejercicio_6(3);
+                    insertarNota(tNombres, tNotas, dato);
                     break;
                 case 7:
                     //ejercicio_7(4);
