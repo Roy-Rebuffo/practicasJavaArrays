@@ -158,6 +158,8 @@ public class EjercicioClaseArrays {
         // Mostrar los nuevos arrays 
         visualizarDatos("Tabla con nuevo nombre y nota añadida"
                 ,nuevosNombres,nuevasNotas);
+        
+        
     }
     
     public static void menu(){//procedimiento
